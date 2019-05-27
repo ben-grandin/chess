@@ -1,0 +1,149 @@
+//--------------------------//
+// ------- WORK STEP -------//
+//--------------------------//
+
+// DONE
+// STORY (1) Environment compilation
+// #1  - Create an empty Class (class "ChessRules" ?) implementing IChess and instanciate it from the State03Game class (SINGLETON !).
+
+// STORY (2) Display initial board w/ pieces
+// #2  - Populate the "Board" Class with a memory space for the board piece positions (class "Matrix" ?) in the method "reinit".
+//       The idea here is to separate the data, so one object for the board matrix is at least something students should do.
+// #3  - Create different types of classes for the pieces (may be the use of a simple mother class "Piece" is enough for this ^^).
+// #4  - Fill the "matrix" with several instanciations of "Piece", with different types of pieces.
+//      So you need to implement the "getPieceType" and "getPieceColor" interface methods.
+
+// STORY (3) Remaining pieces
+// #5  - Now the matrix is filled and dsplay is ok, implement the "getNbRemainingPieces" interface method to get the number of pieces on screen.
+
+// STORY (4) Get piece moves
+// #6  - In order to get the piece moves, show the student the use of interface (for this example, the STRATEGY design pattern would be a good idea ^^)
+//      Create the different classes implementing the interface but let the methods empty for now.
+//      Plug the interface "getPieceMoves" method from "Board" class with the new interface method designed just above.
+// #7  - Now the different piece classes have been created, begin to implement the possible positions for each of them, first begin with either
+//      knight (the simpler move), or Pawn that is quite simple, even if specific cases for 1st move, or eating opponent pieces.
+// #8  - Fill all the other classes implementation (Rook, Knight, Bishop, Queen, King, Pawn) : Do not implement Castling for now.
+
+// STORY (5) Move pieces
+// #9  - Now implement the "movePiece" interface method from "Board" class (it is just a swap between source position and destination position).
+
+// STORY (6) Move pieces 2
+// #10 - Modify the "movePiece" inetrface method to add the King/Rook Castling move.
+// #11 - Modify the "movePiece" interface method to transform a Pawn into a Queen if it reaches the opposite side of the board.
+
+// STORY (7) simple King state
+// #12 - Implement the "getKingState" interface method in order to know if each King is safe or not.
+
+// STORY (8) Real possible moves
+// #13 - Modify the application to handle the king check rules correctly (because for the moment, it is just a simple check to be displayed)
+//       In order to do this, modify the "Matrix" class and the "getPieceMoves" method to get the possible moves that either do not create a new threat for your own king,
+//       or that remove an existing threat. In other words, it is another limitation for your possible moves (but does not tell you if you have won or lost)
+
+// STORY (9) Lost pieces
+// #14 - Keep a list of all lost pieces, by color. Use the "getRemovedPieces" interface method to return them.
+
+// STORY (10) Reinit
+// #16 - process the "reinit" method.
+
+// STORY (11) Undo move
+// #17 - perform a "undo" of the last move (only one, whatever the color) : press BACKSPACE key to undo.
+// #19 - modify the "undo" feature to be able to undo ALL the past moves !!
+
+// STORY (12) Turn duration
+// #15 - Implement a feature for each player turn duration. The "getPlayerDuration" interface methods must return the sum of each player duration from the start.
+// #20 - upgrade the "player duration" to be compliant with the undo feature (that means the implementation class must store each turn duration)
+
+// STORY (13) Add new supapawn piece
+// #18 - add a SupaPawn piece that can move like a normal pawn but in both ways, front and back.
+
+
+
+
+
+
+
+// Test plan
+/*
+
+---------------------------------------------------
+>>>>>         [DISPLAY] #1, #2, #3, #4        <<<<<
+---------------------------------------------------
+- Check the pieces are at the right place (white bottom, black top, each type of piece at its right place).
+
+---------------------------------------------------
+>>>>>                [COUNT] #5               <<<<<
+---------------------------------------------------
+- Check the number of initial pieces is 16 for both sides.
+
+---------------------------------------------------
+>>>>>       [POSSIBLE MOVES] #6, #7, #8       <<<<<
+---------------------------------------------------
+- Click on each piece of each color and check the possible moves are correct.
+    - Pawn 1st move
+    - Pawn next moves
+    - Pawn attack
+    - rook
+    - bishop
+    - knight over pieces
+    - queen
+    - king w/o check rules and w/o Castling
+
+---------------------------------------------------
+>>>>>           [MOVE] #9, #10, #11, #18           <<<<<
+---------------------------------------------------
+- check all the pieces can move freely as defined by the rules.
+    - Pawn 1st move
+    - Pawn next moves
+    - Pawn attack
+    - rook
+    - bishop
+    - knight over pieces
+    - queen
+    - Pawn transformed to queen
+    - king w Castlings but w/o check rules
+    - SupaPawn if implemented
+
+---------------------------------------------------
+>>>>>          [KING STATE] #12, #13          <<<<<
+---------------------------------------------------
+- check the king state is displayed correctly.
+- check the moves that let the king threaten are not possible anymore.
+- Now check the king state is correctly displayed
+- Check the possible moves are limited to "king safe" moves
+- Check the king checks for both colors
+- Check the mat rules for both color
+- Check the pat rules for both color
+
+---------------------------------------------------
+>>>>>         [REMOVE][COUNT] #5, #14         <<<<<
+---------------------------------------------------
+- Remove some pieces to check if the counter is updated.
+- Also check the removed piece is displayed on the left of the board
+
+---------------------------------------------------
+>>>>>                 [REINIT] #16            <<<<<
+---------------------------------------------------
+- check the ENTER key reinits the board correctly from the beginning (erase current game and starts a new one)
+
+---------------------------------------------------
+>>>>>               [DURATION] #15            <<<<<
+---------------------------------------------------
+- check the displayed time for each player turn.
+- check the increment of each player duration between several turns.
+
+---------------------------------------------------
+>>>>>         [UNDO][REINIT] #16, #17, #19    <<<<<
+---------------------------------------------------
+- check the BACKSPACE key undoes the last move (only one!)
+- check the current color is back to previous
+- check there is no interference with reinit
+- check the removed piece list is updated back too
+- check the "update" of the feature that is able to undo ALL the past moves.
+
+---------------------------------------------------
+>>>>>       [UNDO][DURATION] #15, #17, #19    <<<<<
+---------------------------------------------------
+- Check the undo feature is ok with player duration
+
+
+*/
