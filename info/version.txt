@@ -1,0 +1,5 @@
+Object-Oriented Programming
+Student Chess Application v${project.version}
+Teacher  (interface) : Romuald GRIGNON
+Students (game core) : CodingFactory by ITESCIA
+2018-2019
