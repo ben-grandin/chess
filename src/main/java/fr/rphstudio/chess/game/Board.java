@@ -6,27 +6,23 @@
 package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.game.Piece;
 import fr.rphstudio.chess.interf.IChess;
+import fr.rphstudio.chess.interf.IMove;
 
-/**
- *
- * @author achourryad
- */
+
 public class Board {
 	private Piece[][] grid;
-
-
 
 	public Board()
 	{
 		this.grid = new Piece[8][8];
-	generateGrid();
+		generateGrid();
 
 	}
 	public Piece getPiece(IChess.ChessPosition z){
-	// if( z.x == )
-		return this.grid[z.x][z.y];
-
-
+		if( z.x > -1 && z.x < 8 &&  z.y > -1 && z.y < 8 ){
+			return this.grid[z.x][z.y];
+		}
+		else return null;
 	}
 // Faire des méthodes pour placer les pieces a leur place d'origine
 
@@ -35,12 +31,14 @@ public class Board {
 
 		IChess.ChessColor color = null;
 		IChess.ChessType type = null;
+		IMove move = null;
 
 		for (int y = 0; y <= 7 ; y++) {
 			for (int x = 0; x <= 7 ; x++) {
 
 				color = null;
 				type = null;
+				move = null;
 
 				if(y == 0 || y == 1 )  color = IChess.ChessColor.CLR_BLACK;
 				else if ( y == 6 || y == 7) color = IChess.ChessColor.CLR_WHITE;
@@ -56,6 +54,7 @@ public class Board {
 						case 1:
 						case 6:
 							type = IChess.ChessType.TYP_KNIGHT;
+							move = new Knight();
 							break;
 
 						case 2:
@@ -75,8 +74,7 @@ public class Board {
 					type = IChess.ChessType.TYP_PAWN;
 				}
 
-				if(color != null && type != null) this.grid[x][y] = new Piece(color, type);
-
+				if(color != null && type != null && move != null) this.grid[x][y] = new Piece(color, type, move);
 			}
 		}
 	}
