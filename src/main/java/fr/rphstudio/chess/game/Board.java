@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package fr.rphstudio.chess.game;
-import fr.rphstudio.chess.game.Piece;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
 
@@ -25,8 +24,20 @@ public class Board {
 		else return null;
 	}
 // Faire des méthodes pour placer les pieces a leur place d'origine
-
-
+        public int getNbRemainingPieces(IChess.ChessColor c){
+            int count = 0;
+           for (int y = 0; y <= 7 ; y++) {
+            for (int x = 0; x <= 7 ; x++) {
+                if( this.grid[x][y]!=  null  ){
+                    if( grid[x][y].getColor() == c ){
+                        count +=1;
+                    }
+                }
+            }
+           }
+           return count;
+        }
+        
 	private void generateGrid(){
 
 		IChess.ChessColor color = null;

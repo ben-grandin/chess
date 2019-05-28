@@ -29,5 +29,6 @@ public class Piece {
 	public IChess.ChessType getType() {
 		return type;
 	}
+
 }
 
