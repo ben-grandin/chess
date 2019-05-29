@@ -8,9 +8,11 @@ import java.util.List;
 public class ChessUtil {
 	static boolean isValidPosition(IChess.ChessPosition pos, IChess.ChessPosition test, Board board){
 
-		if ((pos.y < 8 && pos.x < 8 && pos.x >= 0 && pos.y >= 0)
-			|| board.getPiece(test) == null
-			|| ( (board.getPiece(test) != null) && board.getPiece(pos).getColor() != board.getPiece(test).getColor() )
+		if ((test.y < 8 && test.x < 8 && test.x >= 0 && test.y >= 0)
+			&&
+			( board.getPiece(test) == null
+				|| ( (board.getPiece(test) != null) && board.getPiece(pos).getColor() != board.getPiece(test).getColor())
+			)
 		) return true;
 
 		else return false ;
