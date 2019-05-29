@@ -10,7 +10,7 @@ public class Bishop implements IMove {
 
 	public List<IChess.ChessPosition> getPossibleMoves(IChess.ChessPosition pos, Board board) {
 
-		return ChessUtil.diagoMove(pos, board);
+		return ChessUtil.diagoMove(pos, board, 7);
 	}
 
 }

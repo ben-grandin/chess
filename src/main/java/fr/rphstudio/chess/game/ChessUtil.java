@@ -18,7 +18,7 @@ public class ChessUtil {
 		else return false ;
 	}
 
-	static List<IChess.ChessPosition> orthoMove(IChess.ChessPosition pos, Board board) {
+	static List<IChess.ChessPosition> orthoMove(IChess.ChessPosition pos, Board board, int x) {
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
 		IChess.ChessPosition test;
 		boolean empty;
@@ -29,7 +29,7 @@ public class ChessUtil {
 			if(isValidPosition(pos,test, board)) list.add(test);
 			empty = board.getPiece(test) == null;
 			i++;
-		} while(empty && i < 8);
+		} while(empty && i <= x);
 
 		i = 1;
 		do {
@@ -37,7 +37,7 @@ public class ChessUtil {
 			if(isValidPosition(pos,test, board)) list.add(test);
 			empty = board.getPiece(test) == null;
 			i++;
-		} while(empty && i < 8);
+		} while(empty && i <= x);
 
 		i = 1;
 		do {
@@ -45,7 +45,7 @@ public class ChessUtil {
 			if(isValidPosition(pos,test, board)) list.add(test);
 			empty = board.getPiece(test) == null;
 			i++;
-		} while(empty && i < 8);
+		} while(empty && i <= x);
 
 		i = 1;
 		do {
@@ -53,17 +53,50 @@ public class ChessUtil {
 			if(isValidPosition(pos,test, board)) list.add(test);
 			empty = board.getPiece(test) == null;
 			i++;
-		} while(empty && i < 8);
+		} while(empty && i <= x);
 
 
 
 		return list;
 	}
 
-	static List<IChess.ChessPosition> diagoMove(IChess.ChessPosition pos, Board board) {
+	static List<IChess.ChessPosition> diagoMove(IChess.ChessPosition pos, Board board, int x) {
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
 		IChess.ChessPosition test = pos;
 
+		boolean empty;
+		int i = 1;
+
+		do {
+			test = new IChess.ChessPosition(pos.x + i, pos.y + i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i <= x);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x - i, pos.y + i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i <= x);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x + i, pos.y - i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i <= x);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x - i, pos.y - i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i <= x);
 		return list;
 	}
 }

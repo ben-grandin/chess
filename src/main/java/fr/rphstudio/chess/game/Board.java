@@ -79,19 +79,19 @@ public class Board {
 						case 2:
 						case 5:
 							type = IChess.ChessType.TYP_BISHOP;
-						//	move = new Bishop();
+							move = new Bishop();
 
 							break;
 
 						case 3:
 							type = IChess.ChessType.TYP_QUEEN;
-							// move = new Queen();
+							move = new Queen();
 
 							break;
 
 						case 4:
 							type = IChess.ChessType.TYP_KING;
-							// move = new King();
+							move = new King();
 
 							break;
 					}

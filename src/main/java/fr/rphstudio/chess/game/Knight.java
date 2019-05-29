@@ -16,10 +16,10 @@ public class Knight implements IMove {
 		for (int x = -2; x <= 2; x++) {
 			for (int y = -2; y <= 2; y++) {
 
-			if(Math.abs(x) + Math.abs(y) == 3) {
-				test = new IChess.ChessPosition(pos.x + x,pos.y + y);
-				if(ChessUtil.isValidPosition(pos, test, board)) list.add(test);
-			}
+				if(Math.abs(x) + Math.abs(y) == 3) {
+					test = new IChess.ChessPosition(pos.x + x,pos.y + y);
+					if(ChessUtil.isValidPosition(pos, test, board)) list.add(test);
+				}
 
 			}
 		}

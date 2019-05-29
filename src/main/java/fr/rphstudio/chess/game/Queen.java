@@ -12,8 +12,8 @@ public class Queen implements IMove {
 
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
 
-		list.addAll(ChessUtil.orthoMove(pos,board));
-		list.addAll(ChessUtil.diagoMove(pos,board));
+		list.addAll(ChessUtil.orthoMove(pos,board, 7));
+		list.addAll(ChessUtil.diagoMove(pos,board, 7));
 
 		return list;
 	}
