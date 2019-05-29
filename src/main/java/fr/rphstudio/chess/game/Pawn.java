@@ -15,38 +15,53 @@ public class Pawn implements IMove {
 
 		switch (board.getPiece(pos).getColor()){
 			case CLR_WHITE:
-				test = new IChess.ChessPosition( pos.x,pos.y - 1);
 
-				if(board.getPiece(test) == null) list.add(test);
-
-				if( (board.getPiece(test) != null)
-						&&	board.getPiece(pos).getColor() != board.getPiece(test).getColor()
-				) {
-					test = new IChess.ChessPosition( pos.x + 1,pos.y - 1);
-					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
-
-					test = new IChess.ChessPosition( pos.x - 1,pos.y - 1);
-					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
+				if(pos.y == 6) {
+					test = new IChess.ChessPosition(pos.x, pos.y - 2);
+					if (board.getPiece(test) == null) list.add(test);
 				}
+
+				test = new IChess.ChessPosition(pos.x, pos.y - 1);
+				if (board.getPiece(test) == null) list.add(test);
+
+				test = new IChess.ChessPosition(pos.x + 1, pos.y - 1);
+				if (ChessUtil.isValidPosition(pos, test, board)
+					&& board.getPiece(test) != null
+					&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()
+				) list.add(test);
+
+				test = new IChess.ChessPosition(pos.x - 1, pos.y - 1);
+				if (ChessUtil.isValidPosition(pos, test, board)
+					&& board.getPiece(test) != null
+					&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()
+				) list.add(test);
 
 				break;
 
 			case CLR_BLACK:
-				test = new IChess.ChessPosition(pos.x, pos.y + 1);
+				if(pos.y == 1) {
+					test = new IChess.ChessPosition(pos.x, pos.y + 2);
+					if (board.getPiece(test) == null) list.add(test);
+				}
 
+				test = new IChess.ChessPosition(pos.x, pos.y + 1);
 				if(board.getPiece(test) == null) list.add(test);
 
-				if((board.getPiece(test) != null)
-						&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()) {
-					test = new IChess.ChessPosition( pos.x + 1,pos.y + 1);
-					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
 
-					test = new IChess.ChessPosition( pos.x - 1,pos.y + 1);
-					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
-				}
+				test = new IChess.ChessPosition( pos.x + 1,pos.y + 1);
+				if (ChessUtil.isValidPosition(pos, test, board)
+						&& board.getPiece(test) != null
+						&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()
+				) list.add(test);
+
+				test = new IChess.ChessPosition( pos.x - 1,pos.y + 1);
+				if (ChessUtil.isValidPosition(pos, test, board)
+					&& board.getPiece(test) != null
+					&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()
+				) list.add(test);
+
 				break;
-
-
+				
 		}
 
 
