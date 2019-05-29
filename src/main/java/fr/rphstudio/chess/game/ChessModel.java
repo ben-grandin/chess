@@ -72,7 +72,23 @@ public class ChessModel implements IChess {
 
 	@Override
 	public void movePiece(ChessPosition p0, ChessPosition p1) {
-		board.setPiece(p1,board.getPiece(p0));
+
+		switch (board.getPiece(p0).getType()){
+			case TYP_PAWN:
+				if(board.getPiece(p0).getColor() == ChessColor.CLR_WHITE && p1.y == 0){
+					board.setPiece(p1,new Piece(board.getPiece(p0).getColor(), ChessType.TYP_QUEEN, new Queen()));
+					break;
+				}
+
+				else if(board.getPiece(p0).getColor() == ChessColor.CLR_BLACK && p1.y == 7){
+					board.setPiece(p1,new Piece(board.getPiece(p0).getColor(), ChessType.TYP_QUEEN, new Queen()));
+					break;
+				}
+
+			default:
+				board.setPiece(p1,board.getPiece(p0));
+		}
+
 		board.setPiece(p0,null);
 
 	}
