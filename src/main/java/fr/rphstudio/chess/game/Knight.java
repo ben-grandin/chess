@@ -8,7 +8,6 @@ import java.util.List;
 
 public class Knight implements IMove {
 
-
 	public List<IChess.ChessPosition> getPossibleMoves(IChess.ChessPosition pos, Board board){
 
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>() ;

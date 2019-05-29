@@ -60,6 +60,8 @@ public class Board {
 						case 0:
 						case 7:
 							type = IChess.ChessType.TYP_ROOK;
+							move = new Rook();
+
 							break;
 
 						case 1:
@@ -71,18 +73,26 @@ public class Board {
 						case 2:
 						case 5:
 							type = IChess.ChessType.TYP_BISHOP;
+							move = new Bishop();
+
 							break;
 
 						case 3:
 							type = IChess.ChessType.TYP_QUEEN;
+							move = new Queen();
+
 							break;
 
 						case 4:
 							type = IChess.ChessType.TYP_KING;
+							move = new King();
+
 							break;
 					}
 				} else if (y == 1|| y == 6){
 					type = IChess.ChessType.TYP_PAWN;
+					move = new Pawn();
+
 				}
 
 				if(color != null && type != null && move != null) this.grid[x][y] = new Piece(color, type, move);
