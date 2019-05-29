@@ -105,6 +105,38 @@ public class Board {
 			}
 		}
 	}
+        
+        public boolean getKingThreaten(color){
 
+            for(int x = 0; x < 8; x++){
+                for(int y = 0; y < 8; y++){
+                    Piece toto = grid[x][y];
 
+                    if(toto != null && toto.getType() == IChess.ChessType.TYP_KING && toto.getColor() == color){
+
+                        IChess.ChessPosition posKing = new IChess.ChessPosition(x,y);
+
+                        for(int x2 = 0; x2 < 8; x2++){
+                            for(int y2 = 0; y2 < 8; y2++){
+
+                                Piece tata = grid[x2][y2];
+
+                                if(tata != null && tata.getColor() != color){
+
+                                    List<IChess.ChessPosition> ennemiMouv = tata.getMove(new IChess.ChessPosition(x2,y2), this);
+
+                                    for( IChess.ChessPosition curMouv : ennemiMouv){         
+                                        if( posKing.equals(curMouv)) return true;
+
+                                    }
+                                }
+                            }					
+                        }
+                    }
+
+                }
+            }
+            return false;
+        }
+    
 }
