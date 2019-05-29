@@ -11,14 +11,47 @@ public class Pawn implements IMove {
 	public List<IChess.ChessPosition> getPossibleMoves(IChess.ChessPosition pos, Board board) {
 
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
-	/*	IChess.ChessPosition test = pos;
+		IChess.ChessPosition test;
 
-		if
+		switch (board.getPiece(pos).getColor()){
+			case CLR_WHITE:
+				test = new IChess.ChessPosition( pos.x,pos.y - 1);
 
-				test = new IChess.ChessPosition(pos.x, pos.y + y);
-				if (board.getPiece(test) != null /* && board.getPiece(test) != "empty" */ /*) list.add(test);
+				if(board.getPiece(test) == null) list.add(test);
 
-		 */
+				if( (board.getPiece(test) != null)
+						&&	board.getPiece(pos).getColor() != board.getPiece(test).getColor()
+				) {
+					test = new IChess.ChessPosition( pos.x + 1,pos.y - 1);
+					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
+
+					test = new IChess.ChessPosition( pos.x - 1,pos.y - 1);
+					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
+				}
+
+				break;
+
+			case CLR_BLACK:
+				test = new IChess.ChessPosition(pos.x, pos.y + 1);
+
+				if(board.getPiece(test) == null) list.add(test);
+
+				if((board.getPiece(test) != null)
+						&& board.getPiece(pos).getColor() != board.getPiece(test).getColor()) {
+					test = new IChess.ChessPosition( pos.x + 1,pos.y + 1);
+					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
+
+					test = new IChess.ChessPosition( pos.x - 1,pos.y + 1);
+					if (ChessUtil.isValidPosition(pos ,test, board)) list.add(test);
+				}
+				break;
+
+
+		}
+
+
+
+
 		return list;
 
 	}

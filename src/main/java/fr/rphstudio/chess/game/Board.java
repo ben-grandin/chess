@@ -23,6 +23,12 @@ public class Board {
 		}
 		else return null;
 	}
+
+	public void setPiece(IChess.ChessPosition z, Piece piece) {
+		this.grid[z.x][z.y] = piece;
+	}
+
+
 // Faire des méthodes pour placer les pieces a leur place d'origine
         public int getNbRemainingPieces(IChess.ChessColor c){
             int count = 0;
@@ -60,32 +66,32 @@ public class Board {
 						case 0:
 						case 7:
 							type = IChess.ChessType.TYP_ROOK;
-							move = new Rook();
+						//	move = new Rook();
 
 							break;
 
 						case 1:
 						case 6:
 							type = IChess.ChessType.TYP_KNIGHT;
-							move = new Knight();
+						//	move = new Knight();
 							break;
 
 						case 2:
 						case 5:
 							type = IChess.ChessType.TYP_BISHOP;
-							move = new Bishop();
+						//	move = new Bishop();
 
 							break;
 
 						case 3:
 							type = IChess.ChessType.TYP_QUEEN;
-							move = new Queen();
+							// move = new Queen();
 
 							break;
 
 						case 4:
 							type = IChess.ChessType.TYP_KING;
-							move = new King();
+							// move = new King();
 
 							break;
 					}
@@ -99,4 +105,6 @@ public class Board {
 			}
 		}
 	}
+
+
 }

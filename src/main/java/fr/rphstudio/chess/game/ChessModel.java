@@ -31,6 +31,7 @@ public class ChessModel implements IChess {
 
 	@Override
 	public void reinit() {
+		this.nom = new ChessModel();
 
 	}
 
@@ -71,6 +72,8 @@ public class ChessModel implements IChess {
 
 	@Override
 	public void movePiece(ChessPosition p0, ChessPosition p1) {
+		board.setPiece(p1,board.getPiece(p0));
+		board.setPiece(p0,null);
 
 	}
 
