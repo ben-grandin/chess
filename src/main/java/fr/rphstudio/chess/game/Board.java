@@ -66,7 +66,7 @@ public class Board {
 						case 0:
 						case 7:
 							type = IChess.ChessType.TYP_ROOK;
-						//	move = new Rook();
+							move = new Rook();
 
 							break;
 

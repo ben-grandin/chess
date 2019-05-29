@@ -18,14 +18,49 @@ public class ChessUtil {
 		else return false ;
 	}
 
-	static List<IChess.ChessPosition> OrthoMove(IChess.ChessPosition pos, Board board) {
+	static List<IChess.ChessPosition> orthoMove(IChess.ChessPosition pos, Board board) {
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
 		IChess.ChessPosition test;
+		boolean empty;
+		int i = 1;
+
+		do {
+			test = new IChess.ChessPosition(pos.x + i, pos.y);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i < 8);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x - i, pos.y);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i < 8);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x, pos.y + i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i < 8);
+
+		i = 1;
+		do {
+			test = new IChess.ChessPosition(pos.x, pos.y - i);
+			if(isValidPosition(pos,test, board)) list.add(test);
+			empty = board.getPiece(test) == null;
+			i++;
+		} while(empty && i < 8);
+
+
 
 		return list;
 	}
 
-	static List<IChess.ChessPosition> DiagoMove(IChess.ChessPosition pos, Board board) {
+	static List<IChess.ChessPosition> diagoMove(IChess.ChessPosition pos, Board board) {
 		List<IChess.ChessPosition> list = new ArrayList<IChess.ChessPosition>();
 		IChess.ChessPosition test = pos;
 

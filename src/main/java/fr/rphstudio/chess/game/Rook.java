@@ -10,7 +10,7 @@ public class  Rook implements IMove {
 
 	public List<IChess.ChessPosition> getPossibleMoves(IChess.ChessPosition pos, Board board) {
 
-	return ChessUtil.OrthoMove(pos,board);
+	return ChessUtil.orthoMove(pos,board);
 
 	}
 
