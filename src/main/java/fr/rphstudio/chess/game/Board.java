@@ -73,7 +73,7 @@ public class Board {
 						case 1:
 						case 6:
 							type = IChess.ChessType.TYP_KNIGHT;
-						//	move = new Knight();
+							move = new Knight();
 							break;
 
 						case 2:
