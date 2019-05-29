@@ -16,7 +16,7 @@ public class Pawn implements IMove {
 		switch (board.getPiece(pos).getColor()){
 			case CLR_WHITE:
 
-				if(pos.y == 6) {
+				if(pos.y == 6 && board.getPiece(new IChess.ChessPosition(pos.x,pos.y -1)) == null) {
 					test = new IChess.ChessPosition(pos.x, pos.y - 2);
 					if (board.getPiece(test) == null) list.add(test);
 				}
@@ -39,7 +39,7 @@ public class Pawn implements IMove {
 				break;
 
 			case CLR_BLACK:
-				if(pos.y == 1) {
+				if(pos.y == 1 && board.getPiece(new IChess.ChessPosition(pos.x,pos.y +1)) == null) {
 					test = new IChess.ChessPosition(pos.x, pos.y + 2);
 					if (board.getPiece(test) == null) list.add(test);
 				}
@@ -61,7 +61,7 @@ public class Pawn implements IMove {
 				) list.add(test);
 
 				break;
-				
+
 		}
 
 
