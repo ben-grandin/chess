@@ -30,6 +30,7 @@ public class King implements IMove {
 			
 		}
  // test
+		// test4
 		this.count ++;
 
 		return list;
