@@ -6,6 +6,7 @@
 package fr.rphstudio.chess.game;
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
+import java.util.List;
 
 
 public class Board {
@@ -106,7 +107,12 @@ public class Board {
 		}
 	}
         
-        public boolean getKingThreaten(color){
+    /**
+     *
+     * @param color
+     * @return
+     */
+    public IChess.ChessKingState getKingThreaten(IChess.ChessColor color){
 
             for(int x = 0; x < 8; x++){
                 for(int y = 0; y < 8; y++){
@@ -126,7 +132,8 @@ public class Board {
                                     List<IChess.ChessPosition> ennemiMouv = tata.getMove(new IChess.ChessPosition(x2,y2), this);
 
                                     for( IChess.ChessPosition curMouv : ennemiMouv){         
-                                        if( posKing.equals(curMouv)) return true;
+                                        if( posKing.equals(curMouv)) 
+                                            return IChess.ChessKingState.KING_THREATEN;
 
                                     }
                                 }
@@ -136,7 +143,7 @@ public class Board {
 
                 }
             }
-            return false;
+            return IChess.ChessKingState.KING_SAFE;
         }
     
 }
