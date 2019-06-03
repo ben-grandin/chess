@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class  Rook implements IMove {
+            
+    /** The possibles moves to Rook on a board
+	*
+	* @param pos is the position of the piece that you want his moves
+	* @param board
+	* @return List<IChess.ChessPosition>
+	*
+	*/
 
 	public List<IChess.ChessPosition> getPossibleMoves(IChess.ChessPosition pos, Board board) {
 

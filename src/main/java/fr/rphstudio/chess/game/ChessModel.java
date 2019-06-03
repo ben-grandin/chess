@@ -31,7 +31,7 @@ public class ChessModel implements IChess {
 
 	@Override
 	public void reinit() {
-		this.nom = new ChessModel();
+		this.board = new Board();
 
 	}
 

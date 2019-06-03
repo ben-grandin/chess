@@ -7,6 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class King implements IMove {
+    
+        /** The possibles moves to King on a board
+	*
+	* @param pos is the position of the piece that you want his moves
+	* @param board
+	* @return List<IChess.ChessPosition>
+	*
+	*/
 
 	int count = 0;
 
