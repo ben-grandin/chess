@@ -145,5 +145,48 @@ public class Board {
             }
             return IChess.ChessKingState.KING_SAFE;
         }
+
+        public Board clone(){
+
+			Board board2 = new Board();
+			board2.grid = new Piece[8][8];
+
+			for (int x = 0; x < 8; x++) {
+				for (int y = 0; y < 8; y++) {
+					if (this.grid[x][y] == null) board2.grid[x][y] = null;
+					else {
+						Piece piece = this.getPiece( new IChess.ChessPosition(x,y));
+
+						board2.grid[x][y] = new Piece(piece.getColor(), piece.getType(), piece.getMove());
+					}
+				}
+			}
+
+			return board2;
+		}
+
+	public void movePiece(IChess.ChessPosition p0, IChess.ChessPosition p1) {
+
+		switch( this.getPiece(p0).getType() ){
+
+			case TYP_PAWN:
+				if (this.getPiece(p0).getColor() == IChess.ChessColor.CLR_WHITE && p1.y == 0){
+					this.setPiece(p1, new Piece(this.getPiece(p0).getColor(), IChess.ChessType.TYP_QUEEN, new Queen() ));
+					break;
+				}
+				else if (this.getPiece(p0).getColor() == IChess.ChessColor.CLR_BLACK && p1.y == 7){
+					this.setPiece(p1, new Piece(this.getPiece(p0).getColor(), IChess.ChessType.TYP_QUEEN, new Queen() ));
+					break;
+				}
+
+			default:
+				this.setPiece(p1,this.getPiece(p0));
+		}
+
+		this.setPiece(p0,null);
+
+	}
+
+
     
 }

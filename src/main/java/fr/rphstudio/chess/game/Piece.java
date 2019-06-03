@@ -2,7 +2,9 @@ package fr.rphstudio.chess.game;
 
 import fr.rphstudio.chess.interf.IChess;
 import fr.rphstudio.chess.interf.IMove;
+import org.newdawn.slick.util.Log;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Piece {
@@ -18,7 +20,7 @@ public class Piece {
 	}
 
 	public List<IChess.ChessPosition> getMove(IChess.ChessPosition pos, Board board){
-		return this.move.getPossibleMoves(pos, board);
+		return  this.move.getPossibleMoves(pos, board);
 	}
 
 
@@ -30,5 +32,8 @@ public class Piece {
 		return type;
 	}
 
+	public IMove getMove() {
+		return move;
+	}
 }
 

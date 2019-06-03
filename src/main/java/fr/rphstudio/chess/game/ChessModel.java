@@ -64,17 +64,36 @@ public class ChessModel implements IChess {
 	}
 
 	@Override
-	public List<ChessPosition> getPieceMoves(ChessPosition p) {
-		Piece piece = board.getPiece(p);
-		if(piece != null) return piece.getMove(p,this.board) ;
+	public List<ChessPosition> getPieceMoves(ChessPosition pos) {
+		List<IChess.ChessPosition> list;
+		Piece piece = board.getPiece(pos);
+
+		if(piece != null){
+			list =  piece.getMove(pos,this.board) ;
+
+			List<IChess.ChessPosition>  listToReturn = new ArrayList<IChess.ChessPosition>();
+
+			for(IChess.ChessPosition posTest : list){
+				Board board2 = null;
+				board2 = board.clone();
+				if( board2 != null &&  posTest != null ) board2.movePiece(pos, posTest);
+				if( board2 != null
+						&& board2.getPiece(posTest) != null
+						&& board2.getPiece(posTest).getColor() != null
+						&& board2.getKingThreaten(board2.getPiece(posTest).getColor()) == IChess.ChessKingState.KING_SAFE) listToReturn.add(posTest);
+			}
+
+			return listToReturn;
+
+		}
  		else return new ArrayList<>();
 	}
 
 	@Override
 	public void movePiece(ChessPosition p0, ChessPosition p1) {
-		
+
            switch( board.getPiece(p0).getType() ){
-               
+
                case TYP_PAWN:
                     if (board.getPiece(p0).getColor() == ChessColor.CLR_WHITE && p1.y == 0){
                         board.setPiece(p1, new Piece(board.getPiece(p0).getColor(), ChessType.TYP_QUEEN, new Queen() ));
@@ -84,11 +103,11 @@ public class ChessModel implements IChess {
                         board.setPiece(p1, new Piece(board.getPiece(p0).getColor(), ChessType.TYP_QUEEN, new Queen() ));
                         break;
                     }
-                
+
                default:
                    board.setPiece(p1,board.getPiece(p0));
-           }      
-                   
+           }
+
             board.setPiece(p0,null);
 
 	}
