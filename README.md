@@ -1,1 +1,2 @@
-chess
+A agile school project ! 
+
